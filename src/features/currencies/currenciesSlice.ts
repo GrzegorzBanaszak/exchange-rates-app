@@ -7,6 +7,7 @@ const initialState: CurrenciesState = {
   rates: [],
   reducedRates: [],
   limit: [0, 10],
+  selectedRates: [],
 };
 
 export const getCurrencies = createAsyncThunk(
@@ -25,7 +26,21 @@ export const getCurrencies = createAsyncThunk(
 export const currenciesSlice = createSlice({
   name: "currencies",
   initialState,
-  reducers: {},
+  reducers: {
+    addToSelected: (state, action: PayloadAction<Rates>) => {
+      const rate = state.selectedRates.find(
+        (rate) => rate.code === action.payload.code
+      );
+      if (rate) {
+        state.selectedRates.splice(state.selectedRates.indexOf(rate), 1);
+      } else {
+        state.selectedRates.push(action.payload);
+      }
+    },
+    resetSelected: (state) => {
+      state.selectedRates = [];
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(
@@ -43,5 +58,5 @@ export const currenciesSlice = createSlice({
       });
   },
 });
-
+export const { addToSelected, resetSelected } = currenciesSlice.actions;
 export default currenciesSlice.reducer;

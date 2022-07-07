@@ -4,4 +4,5 @@ export interface CurrenciesState {
   rates: Rates[];
   reducedRates: Rates[];
   limit: number[];
+  selectedRates: Rates[];
 }

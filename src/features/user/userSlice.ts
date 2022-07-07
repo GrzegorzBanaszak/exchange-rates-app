@@ -30,7 +30,23 @@ export const userSlice = createSlice({
         state.favoritesCurrencies.push(action.payload);
       }
     },
+    addManyFavoritesCurrencies: (state, action: PayloadAction<Rates[]>) => {
+      action.payload.forEach((currency) => {
+        if (
+          !state.favoritesCurrencies.some(
+            (c) => c.currency === currency.currency
+          )
+        ) {
+          state.favoritesCurrencies.push(currency);
+        }
+      });
+    },
   },
 });
-export const { addUser, removeUser, addFavoriteCurrency } = userSlice.actions;
+export const {
+  addUser,
+  removeUser,
+  addFavoriteCurrency,
+  addManyFavoritesCurrencies,
+} = userSlice.actions;
 export default userSlice.reducer;
