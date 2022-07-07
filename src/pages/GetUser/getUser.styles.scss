@@ -1,0 +1,42 @@
+@import "../../styles/utilis.scss";
+.user {
+  @include container;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  &__box {
+    background-color: white;
+    padding: 3rem 2rem;
+    border-radius: 1rem;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    text-transform: uppercase;
+    h3 {
+      color: #37474f;
+    }
+    input[type="text"] {
+      border: 1px solid #ccc;
+      border-radius: 0.25rem;
+      padding: 0.5rem;
+      width: 100%;
+      &:focus {
+        outline: none;
+      }
+    }
+    button {
+      display: block;
+      width: 100%;
+      border: none;
+      border-radius: 15px;
+      padding: 0.7rem 1rem;
+      background-color: #37474f;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: white;
+      cursor: pointer;
+    }
+  }
+}
