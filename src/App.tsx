@@ -6,7 +6,9 @@ import {
 } from "react-router-dom";
 import { useAppSelector } from "./app/hooks";
 import Layout from "./components/Layout";
+import CurrenciesList from "./pages/CurrenciesList";
 import Dashboard from "./pages/Dashboard";
+import Favorites from "./pages/Favorites";
 import GetUser from "./pages/GetUser";
 
 function App() {
@@ -22,7 +24,10 @@ function App() {
           <Route
             path="dashboard"
             element={!user ? <Navigate to="/" /> : <Dashboard />}
-          />
+          >
+            <Route index element={<CurrenciesList />} />
+            <Route path="favorites" element={<Favorites />} />
+          </Route>
         </Route>
       </Routes>
     </Router>

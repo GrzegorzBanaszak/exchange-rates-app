@@ -2,18 +2,19 @@ import "./navbar.styles.scss";
 import { RiExchangeDollarFill } from "react-icons/ri";
 import { useAppSelector } from "../../app/hooks";
 import { AiOutlineUser } from "react-icons/ai";
+import { Link } from "react-router-dom";
 const Navbar = () => {
   const { user } = useAppSelector((state) => state.user);
   return (
     <nav className="navbar">
-      <div className="navbar__logo">
+      <Link to="/dashboard" className="navbar__logo">
         <RiExchangeDollarFill size={24} />
         Exchange rates
-      </div>
-      <div className="navbar__user">
+      </Link>
+      <Link to="/dashboard/favorites" className="navbar__user">
         <AiOutlineUser size={22} />
         {user}
-      </div>
+      </Link>
     </nav>
   );
 };

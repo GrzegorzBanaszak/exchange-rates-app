@@ -1,11 +1,11 @@
 import React, { FC } from "react";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
-import { Rates } from "../../types";
+import { CurrencyProps } from "../../types";
 import "./currenct.styled.scss";
 import { MdOutlineFavoriteBorder, MdFavorite } from "react-icons/md";
 import { addFavoriteCurrency } from "../../features/user/userSlice";
 import { addToSelected } from "../../features/currencies/currenciesSlice";
-const Currency: FC<Rates> = ({ currency, code, mid }) => {
+const Currency: FC<CurrencyProps> = ({ currency, code, mid, hasFavorite }) => {
   const { favoritesCurrencies } = useAppSelector((state) => state.user);
   const { selectedRates } = useAppSelector((state) => state.currencies);
   const dispatch = useAppDispatch();
@@ -27,17 +27,21 @@ const Currency: FC<Rates> = ({ currency, code, mid }) => {
     >
       <h4 className="currency__name">{currency}</h4>
       <div className="currency__value">
-        {favoritesCurrencies.some((item) => item.currency === currency) ? (
-          <MdFavorite
-            size={24}
-            color={"red"}
-            onClick={(e) => handleFavoriteAdd(e)}
-          />
-        ) : (
-          <MdOutlineFavoriteBorder
-            size={24}
-            onClick={(e) => handleFavoriteAdd(e)}
-          />
+        {hasFavorite && (
+          <>
+            {favoritesCurrencies.some((item) => item.currency === currency) ? (
+              <MdFavorite
+                size={24}
+                color={"red"}
+                onClick={(e) => handleFavoriteAdd(e)}
+              />
+            ) : (
+              <MdOutlineFavoriteBorder
+                size={24}
+                onClick={(e) => handleFavoriteAdd(e)}
+              />
+            )}
+          </>
         )}
         <p>
           {mid} {code}
