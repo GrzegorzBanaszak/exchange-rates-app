@@ -4,11 +4,18 @@ import { resetSelected } from "../../features/currencies/currenciesSlice";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 
 import AddMany from "../../components/AddMany";
+import { useEffect } from "react";
 const CurrenciesList = () => {
   const { rates, reducedRates, selectedRates } = useAppSelector(
     (state) => state.currencies
   );
   const dispatch = useAppDispatch();
+  useEffect(() => {
+    if (selectedRates.length > 0) {
+      dispatch(resetSelected());
+    }
+  }, []);
+
   const addManyHandler = () => {
     dispatch(addManyFavoritesCurrencies(selectedRates));
     dispatch(resetSelected());

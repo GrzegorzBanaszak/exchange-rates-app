@@ -2,7 +2,24 @@
 .dashboard {
   @include container;
   min-height: 100vh;
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: white;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px,
     rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 1rem 0.5rem;
+    padding: 1rem 0.5rem;
+    border-bottom: 1px solid #ccc;
+    max-width: 992px;
+    @include lg {
+      margin: 1rem auto;
+    }
+    &--title {
+      text-transform: uppercase;
+      font-weight: 500;
+      font-size: 1.4rem;
+    }
+  }
 }

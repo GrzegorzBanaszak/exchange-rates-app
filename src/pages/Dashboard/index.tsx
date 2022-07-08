@@ -13,6 +13,10 @@ const Dashboard = () => {
   return (
     <section className="dashboard">
       <Navbar />
+      <header className="dashboard__header">
+        <div className="dashboard__header--title">Nazwa</div>
+        <div className="dashboard__header--title">Kurs</div>
+      </header>
       <Outlet />
     </section>
   );
