@@ -7,8 +7,9 @@ import { useEffect } from "react";
 import { ButtonFavoritesTypeEnum } from "../../types";
 import { MdLibraryAdd } from "react-icons/md";
 import Pagination from "../../components/Pagination";
+import Spinner from "../../components/Spinner";
 const CurrenciesList = () => {
-  const { rates, reducedRates, selectedRates } = useAppSelector(
+  const { rates, reducedRates, selectedRates, isLoading } = useAppSelector(
     (state) => state.currencies
   );
   const dispatch = useAppDispatch();
@@ -22,6 +23,9 @@ const CurrenciesList = () => {
     dispatch(addManyFavoritesCurrencies(selectedRates));
     dispatch(resetSelected());
   };
+  if (isLoading) {
+    return <Spinner color="black" />;
+  }
   return (
     <>
       {rates &&

@@ -1,9 +1,4 @@
-import {
-  AiOutlineLeft,
-  AiOutlineRight,
-  AiOutlineDoubleRight,
-  AiOutlineDoubleLeft,
-} from "react-icons/ai";
+import { AiOutlineLeft, AiOutlineRight } from "react-icons/ai";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import "./pagination.styles.scss";
 import {

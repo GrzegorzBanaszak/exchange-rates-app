@@ -4,6 +4,7 @@ import currenciesServices from "./currenciesServices";
 
 const initialState: CurrenciesState = {
   effectiveDate: "",
+  isLoading: false,
   rates: [],
   reducedRates: [],
   limit: [0, 10],
@@ -49,9 +50,13 @@ export const currenciesSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
+      .addCase(getCurrencies.pending, (state) => {
+        state.isLoading = true;
+      })
       .addCase(
         getCurrencies.fulfilled,
         (state, action: PayloadAction<Rates[]>) => {
+          state.isLoading = false;
           state.rates = action.payload;
           state.reducedRates = action.payload.slice(
             state.limit[0],
