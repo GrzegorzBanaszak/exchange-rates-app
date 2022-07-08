@@ -40,6 +40,12 @@ export const currenciesSlice = createSlice({
     resetSelected: (state) => {
       state.selectedRates = [];
     },
+    setLimit: (state, action: PayloadAction<[number, number]>) => {
+      state.limit = action.payload;
+    },
+    setReducedRates: (state) => {
+      state.reducedRates = state.rates.slice(state.limit[0], state.limit[1]);
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -58,5 +64,6 @@ export const currenciesSlice = createSlice({
       });
   },
 });
-export const { addToSelected, resetSelected } = currenciesSlice.actions;
+export const { addToSelected, resetSelected, setLimit, setReducedRates } =
+  currenciesSlice.actions;
 export default currenciesSlice.reducer;

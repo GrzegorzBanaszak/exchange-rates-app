@@ -6,6 +6,7 @@ import ButtonFavorites from "../../components/ButtonFavorites";
 import { useEffect } from "react";
 import { ButtonFavoritesTypeEnum } from "../../types";
 import { MdLibraryAdd } from "react-icons/md";
+import Pagination from "../../components/Pagination";
 const CurrenciesList = () => {
   const { rates, reducedRates, selectedRates } = useAppSelector(
     (state) => state.currencies
@@ -41,6 +42,7 @@ const CurrenciesList = () => {
           <MdLibraryAdd />
         </ButtonFavorites>
       )}
+      <Pagination />
     </>
   );
 };

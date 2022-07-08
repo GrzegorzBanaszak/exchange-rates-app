@@ -1,0 +1,14 @@
+.pagination {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  svg {
+    cursor: pointer;
+  }
+  &__location {
+    padding: 0.2rem 0.7rem;
+    user-select: none;
+  }
+}
