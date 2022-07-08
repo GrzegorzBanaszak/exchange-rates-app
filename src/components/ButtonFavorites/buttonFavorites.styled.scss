@@ -1,0 +1,28 @@
+@import "../../styles/utilis.scss";
+
+.button {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 50%;
+  @include lg {
+    bottom: 5%;
+    right: 15%;
+    width: 4rem;
+    height: 4rem;
+    font-size: 1.8rem;
+  }
+  &__add {
+    background-color: #2e7d32;
+    color: white;
+  }
+  &__remove {
+    background-color: #e53935;
+    color: white;
+  }
+}
