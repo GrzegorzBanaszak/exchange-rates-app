@@ -41,6 +41,20 @@ export const userSlice = createSlice({
         }
       });
     },
+    removeManyFavoritesCurrencies: (state, action: PayloadAction<Rates[]>) => {
+      action.payload.forEach((currency) => {
+        const currencyToRemove = state.favoritesCurrencies.find(
+          (c) => c.currency === currency.currency
+        );
+
+        if (currencyToRemove) {
+          state.favoritesCurrencies.splice(
+            state.favoritesCurrencies.indexOf(currencyToRemove),
+            1
+          );
+        }
+      });
+    },
   },
 });
 export const {
@@ -48,5 +62,6 @@ export const {
   removeUser,
   addFavoriteCurrency,
   addManyFavoritesCurrencies,
+  removeManyFavoritesCurrencies,
 } = userSlice.actions;
 export default userSlice.reducer;
