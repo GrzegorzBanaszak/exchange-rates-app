@@ -14,7 +14,7 @@ import GetUser from "./pages/GetUser";
 function App() {
   const { user } = useAppSelector((state) => state.user);
   return (
-    <Router>
+    <Router basename={process.env.PUBLIC_URL}>
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route
